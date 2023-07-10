@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+    <link rel="stylesheet" href="/dist/css/bootstrap.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a th:href="@{/employee}" class="navbar-brand">Employees</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/employee}">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <form action="#" th:action="@{/employee/post/edit}" th:object="${employee}" method="post">
+        <p><input type="number" th:field="*{id}" hidden /></p>
+        <h1>Update Employee</h1>
+        <div class="form-group">
+            <label for="fname">Employee First Name</label>
+            <input type="text" class="form-control" id="fname"  th:field="*{fname}">
+        </div>
+        <div class="form-group">
+            <label for="lname">Employee Last Name</label>
+            <input type="text" class="form-control" id="lname" th:field="*{lname}">
+        </div>
+        <div class="form-group">
+            <label for="email">Employee E-Mail</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}">
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </form>
+
+</div>
+
+<script src="/dist/js/bootstrap.js"></script>
+
+</body>
+</html>

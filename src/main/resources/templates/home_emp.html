@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employees</title>
+  <link rel="stylesheet" href="/dist/css/bootstrap.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a th:href="@{/employee}" class="navbar-brand">Employees</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/employee}">Home</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>List Employees</h1>
+  <a class="btn btn-primary" th:href="@{/employee/page/add}">Add</a>
+
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">E-Mail</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee: ${employees}">
+      <th scope="row" th:text="${employee.id}"></th>
+      <td th:text="${employee.fname}"></td>
+      <td th:text="${employee.lname}"></td>
+      <td th:text="${employee.email}"></td>
+      <td>
+        <a class="btn btn-primary" th:href="@{/employee/page/edit/{id}(id=${employee.id})}">Update</a>
+        <a class="btn btn-danger" th:href="@{/employee/del/{id}(id=${employee .id})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="/dist/js/bootstrap.js"></script>
+
+</body>
+</html>
